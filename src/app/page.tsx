@@ -1,5 +1,8 @@
+import Experience from '@/components/sections/experience';
 import Grid from '@/components/sections/grid';
 import Hero from '@/components/sections/hero';
+import RecentProjects from '@/components/sections/recent-projects';
+import Testimonials from '@/components/sections/testimonials';
 import { FloatingNav } from '@/components/ui/floating-navbar';
 import { navItems } from '@/data';
 
@@ -9,6 +12,9 @@ export default function Home() {
       <FloatingNav navItems={navItems} />
       <Hero />
       <Grid />
+      <RecentProjects />
+      <Testimonials />
+      <Experience />
     </main>
   );
 }

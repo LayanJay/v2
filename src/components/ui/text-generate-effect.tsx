@@ -1,23 +1,22 @@
-"use client";
+'use client';
 
-import { cn } from "@/utils/tailwind-utils";
-import { motion, stagger, useAnimate } from "framer-motion";
-import { useEffect } from "react";
+import { cn } from '@/utils/tailwind-utils';
+import { motion, stagger, useAnimate } from 'framer-motion';
+import { useEffect } from 'react';
 
 export const TextGenerateEffect = ({ words, className }: { words: string; className?: string }) => {
   const [scope, animate] = useAnimate();
-  let wordsArray = words.split(" ");
+  const wordsArray = words.split(' ');
   useEffect(() => {
-    console.log(wordsArray);
     animate(
-      "span",
+      'span',
       {
         opacity: 1,
       },
       {
         duration: 2,
         delay: stagger(0.2),
-      }
+      },
     );
   }, [animate, wordsArray]);
 
@@ -28,9 +27,9 @@ export const TextGenerateEffect = ({ words, className }: { words: string; classN
           return (
             <motion.span
               key={word + idx}
-              className={` ${idx > 3 ? "text-purple" : "dark:text-white text-black"} opacity-0`}
+              className={` ${idx > 3 ? 'text-purple' : 'dark:text-white text-black'} opacity-0`}
             >
-              {word}{" "}
+              {word}{' '}
             </motion.span>
           );
         })}
@@ -39,9 +38,9 @@ export const TextGenerateEffect = ({ words, className }: { words: string; classN
   };
 
   return (
-    <div className={cn("font-bold", className)}>
-      <div className="my-4">
-        <div className=" dark:text-white text-black leading-snug tracking-wide">
+    <div className={cn('font-bold', className)}>
+      <div className='my-4'>
+        <div className='leading-snug tracking-wide text-black  dark:text-white'>
           {renderWords()}
         </div>
       </div>

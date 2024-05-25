@@ -1,26 +1,26 @@
-"use client";
+'use client';
 
-import dynamic from "next/dynamic";
+import dynamic from 'next/dynamic';
 
-const World = dynamic(() => import("./globe").then((m) => m.World), {
+const World = dynamic(() => import('./globe').then((m) => m.World), {
   ssr: false,
 });
 
 const World3D = () => {
   const globeConfig = {
     pointSize: 4,
-    globeColor: "#062056",
+    globeColor: '#062056',
     showAtmosphere: true,
-    atmosphereColor: "#FFFFFF",
+    atmosphereColor: '#FFFFFF',
     atmosphereAltitude: 0.1,
-    emissive: "#062056",
+    emissive: '#062056',
     emissiveIntensity: 0.1,
     shininess: 0.9,
-    polygonColor: "rgba(255,255,255,0.7)",
-    ambientLight: "#38bdf8",
-    directionalLeftLight: "#ffffff",
-    directionalTopLight: "#ffffff",
-    pointLight: "#ffffff",
+    polygonColor: 'rgba(255,255,255,0.7)',
+    ambientLight: '#38bdf8',
+    directionalLeftLight: '#ffffff',
+    directionalTopLight: '#ffffff',
+    pointLight: '#ffffff',
     arcTime: 1000,
     arcLength: 0.9,
     rings: 1,
@@ -29,7 +29,7 @@ const World3D = () => {
     autoRotate: true,
     autoRotateSpeed: 0.5,
   };
-  const colors = ["#06b6d4", "#3b82f6", "#6366f1"];
+  const colors = ['#06b6d4', '#3b82f6', '#6366f1'];
   const sampleArcs = [
     {
       order: 1,
@@ -396,9 +396,9 @@ const World3D = () => {
   return (
     // remove dark:bg-black bg-white h-screen md:h-auto  w-full flex-row py-20
     // change absolute -left-5 top-36, add w-full h-full md:top-40
-    <div className="absolute flex items-center justify-center w-full h-full -left-5 top-36 md:top-40">
+    <div className='absolute flex items-center justify-center w-full h-full -left-3 top-40 md:top-30'>
       {/* remove h-full md:h-[40rem] */}
-      <div className="relative w-full px-4 mx-auto overflow-hidden max-w-7xl h-96">
+      <div className='relative w-full px-4 mx-auto overflow-hidden max-w-7xl h-96 md:h-[650px]'>
         {/* remove these text divs */}
         {/* <motion.div
           initial={{
@@ -422,9 +422,10 @@ const World3D = () => {
             don&apos;t forget to share it.
           </p>
         </motion.div> */}
-        <div className="absolute inset-x-0 bottom-0 z-40 w-full h-40 pointer-events-none select-none bg-gradient-to-b from-transparent dark:to-black to-white" />
+        <div className='absolute inset-x-0 bottom-0 z-40 w-full h-40 md:h-[500px] pointer-events-none select-none bg-gradient-to-b from-transparent dark:to-black to-white' />
+
         {/* remove -bottom-20 */}
-        <div className="absolute z-10 w-full h-72 md:h-full">
+        <div className='absolute z-30 w-full h-72 md:h-full cursor-pointer'>
           <World data={sampleArcs} globeConfig={globeConfig} />
         </div>
       </div>
