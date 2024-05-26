@@ -1,10 +1,13 @@
-import Experience from '@/components/sections/experience';
 import Grid from '@/components/sections/grid';
 import Hero from '@/components/sections/hero';
-import RecentProjects from '@/components/sections/recent-projects';
-import Testimonials from '@/components/sections/testimonials';
 import { FloatingNav } from '@/components/ui/floating-navbar';
 import { navItems } from '@/data';
+import dynamic from 'next/dynamic';
+
+const RecentProjects = dynamic(() => import('@/components/sections/recent-projects'));
+const Testimonials = dynamic(() => import('@/components/sections/testimonials'));
+const Experience = dynamic(() => import('@/components/sections/experience'));
+const Footer = dynamic(() => import('@/components/sections/footer'));
 
 export default function Home() {
   return (
@@ -15,6 +18,7 @@ export default function Home() {
       <RecentProjects />
       <Testimonials />
       <Experience />
+      <Footer />
     </main>
   );
 }

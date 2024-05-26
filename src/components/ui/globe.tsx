@@ -4,7 +4,7 @@
 import countries from '@/data/globe.json';
 import { OrbitControls } from '@react-three/drei';
 import { Canvas, Object3DNode, extend, useThree } from '@react-three/fiber';
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { Color, Fog, PerspectiveCamera, Scene, Vector3 } from 'three';
 import ThreeGlobe from 'three-globe';
 
@@ -63,11 +63,12 @@ interface WorldProps {
 
 let numbersOfRings = [0];
 
-export function Globe({ globeConfig, data }: WorldProps) {
+export function Globe({ globeConfig, data }: Readonly<WorldProps>) {
   const [globeData, setGlobeData] = useState<
     | {
         size: number;
         order: number;
+        // eslint-disable-next-line no-unused-vars
         color: (t: number) => string;
         lat: number;
         lng: number;
@@ -94,14 +95,7 @@ export function Globe({ globeConfig, data }: WorldProps) {
     ...globeConfig,
   };
 
-  useEffect(() => {
-    if (globeRef.current) {
-      _buildData();
-      _buildMaterial();
-    }
-  }, [globeRef.current]);
-
-  const _buildMaterial = () => {
+  const _buildMaterial = useCallback(() => {
     if (!globeRef.current) return;
 
     const globeMaterial = globeRef.current.globeMaterial() as unknown as {
@@ -112,11 +106,16 @@ export function Globe({ globeConfig, data }: WorldProps) {
     };
     globeMaterial.color = new Color(globeConfig.globeColor);
     globeMaterial.emissive = new Color(globeConfig.emissive);
-    globeMaterial.emissiveIntensity = globeConfig.emissiveIntensity || 0.1;
-    globeMaterial.shininess = globeConfig.shininess || 0.9;
-  };
+    globeMaterial.emissiveIntensity = globeConfig.emissiveIntensity ?? 0.1;
+    globeMaterial.shininess = globeConfig.shininess ?? 0.9;
+  }, [
+    globeConfig.emissive,
+    globeConfig.emissiveIntensity,
+    globeConfig.globeColor,
+    globeConfig.shininess,
+  ]);
 
-  const _buildData = () => {
+  const _buildData = useCallback(() => {
     const arcs = data;
     const points = [];
     for (let i = 0; i < arcs.length; i++) {
@@ -147,25 +146,16 @@ export function Globe({ globeConfig, data }: WorldProps) {
     );
 
     setGlobeData(filteredPoints);
-  };
+  }, [data, defaultProps.pointSize]);
 
   useEffect(() => {
-    if (globeRef.current && globeData) {
-      globeRef.current
-        .hexPolygonsData(countries.features)
-        .hexPolygonResolution(3)
-        .hexPolygonMargin(0.7)
-        .showAtmosphere(defaultProps.showAtmosphere)
-        .atmosphereColor(defaultProps.atmosphereColor)
-        .atmosphereAltitude(defaultProps.atmosphereAltitude)
-        .hexPolygonColor(() => {
-          return defaultProps.polygonColor;
-        });
-      startAnimation();
+    if (globeRef.current) {
+      _buildData();
+      _buildMaterial();
     }
-  }, [globeData]);
+  }, [_buildData, _buildMaterial]);
 
-  const startAnimation = () => {
+  const startAnimation = useCallback(() => {
     if (!globeRef.current || !globeData) return;
 
     globeRef.current
@@ -199,7 +189,37 @@ export function Globe({ globeConfig, data }: WorldProps) {
       .ringMaxRadius(defaultProps.maxRings)
       .ringPropagationSpeed(RING_PROPAGATION_SPEED)
       .ringRepeatPeriod((defaultProps.arcTime * defaultProps.arcLength) / defaultProps.rings);
-  };
+  }, [
+    data,
+    defaultProps.arcLength,
+    defaultProps.arcTime,
+    defaultProps.maxRings,
+    defaultProps.rings,
+    globeData,
+  ]);
+
+  useEffect(() => {
+    if (globeRef.current && globeData) {
+      globeRef.current
+        .hexPolygonsData(countries.features)
+        .hexPolygonResolution(3)
+        .hexPolygonMargin(0.7)
+        .showAtmosphere(defaultProps.showAtmosphere)
+        .atmosphereColor(defaultProps.atmosphereColor)
+        .atmosphereAltitude(defaultProps.atmosphereAltitude)
+        .hexPolygonColor(() => {
+          return defaultProps.polygonColor;
+        });
+      startAnimation();
+    }
+  }, [
+    defaultProps.atmosphereAltitude,
+    defaultProps.atmosphereColor,
+    defaultProps.polygonColor,
+    defaultProps.showAtmosphere,
+    globeData,
+    startAnimation,
+  ]);
 
   useEffect(() => {
     if (!globeRef.current || !globeData) return;
@@ -214,13 +234,9 @@ export function Globe({ globeConfig, data }: WorldProps) {
     return () => {
       clearInterval(interval);
     };
-  }, [globeRef.current, globeData]);
+  }, [data.length, globeData]);
 
-  return (
-    <>
-      <threeGlobe ref={globeRef} />
-    </>
-  );
+  return <threeGlobe ref={globeRef} />;
 }
 
 export function WebGLRendererConfig() {

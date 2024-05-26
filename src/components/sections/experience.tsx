@@ -4,7 +4,7 @@ import MovingBorderCard from '../ui/moving-border-card';
 
 const Experience = () => {
   return (
-    <div className='w-full py-20 max-w-7xl'>
+    <div id='experience' className='w-full py-20 max-w-7xl'>
       <h1 className='heading'>
         My <span className='text-purple'>Work Experience</span>
       </h1>
