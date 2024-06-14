@@ -27,7 +27,7 @@ const Footer = () => {
         </a>
       </div>
       <div className='flex mt-16 md:flex-row flex-col justify-between items-center space-y-4 md:space-y-0'>
-        <p className='text-sm md:font-normal font-light text-white-200'>
+        <p className='text-sm md:font-normal font-light text-center sm:text-left text-white-200'>
           Copyright © 2024 Layan Jayasinghe
         </p>
 
