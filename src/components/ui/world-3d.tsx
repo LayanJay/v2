@@ -394,12 +394,8 @@ const World3D = () => {
   ];
 
   return (
-    // remove dark:bg-black bg-white h-screen md:h-auto  w-full flex-row py-20
-    // change absolute -left-5 top-36, add w-full h-full md:top-40
     <div className='absolute flex items-center justify-center w-full h-full -left-3 top-40 md:top-30'>
-      {/* remove h-full md:h-[40rem] */}
       <div className='relative w-full px-4 mx-auto overflow-hidden max-w-7xl h-96 md:h-[650px]'>
-        {/* remove these text divs */}
         {/* <motion.div
           initial={{
             opacity: 0,
@@ -424,7 +420,6 @@ const World3D = () => {
         </motion.div> */}
         <div className='absolute inset-x-0 bottom-0 z-40 w-full h-40 md:h-[500px] pointer-events-none select-none bg-gradient-to-b from-transparent dark:to-black to-white' />
 
-        {/* remove -bottom-20 */}
         <div className='absolute z-30 w-full h-72 md:h-full cursor-pointer'>
           <World data={sampleArcs} globeConfig={globeConfig} />
         </div>

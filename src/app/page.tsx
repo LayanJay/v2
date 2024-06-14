@@ -1,9 +1,9 @@
-import Grid from '@/components/sections/grid';
 import Hero from '@/components/sections/hero';
 import { FloatingNav } from '@/components/ui/floating-navbar';
 import { navItems } from '@/data';
 import dynamic from 'next/dynamic';
 
+const Grid = dynamic(() => import('@/components/sections/grid'));
 const RecentProjects = dynamic(() => import('@/components/sections/recent-projects'));
 const Testimonials = dynamic(() => import('@/components/sections/testimonials'));
 const Experience = dynamic(() => import('@/components/sections/experience'));
