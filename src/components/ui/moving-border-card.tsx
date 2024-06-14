@@ -44,7 +44,7 @@ const MovingBorderCard = ({
         <MovingBorder duration={duration} rx='22%' ry='22%'>
           <div
             className={cn(
-              'h-20 w-20 opacity-[0.8] bg-[radial-gradient(#CBACF9_40%,transparent_60%)]',
+              'h-20 w-20 z-0 opacity-[0.8] bg-[radial-gradient(#CBACF9_40%,transparent_60%)]',
               borderClassName,
             )}
           />
@@ -53,7 +53,7 @@ const MovingBorderCard = ({
 
       <div
         className={cn(
-          'relative bg-slate-900/[0.] border border-slate-800 backdrop-blur-xl text-white flex items-center justify-center w-full h-full text-sm antialiased',
+          'relative z-10 bg-slate-900/[0.] border border-slate-800 backdrop-blur-xl text-white flex items-center justify-center w-full h-full text-sm antialiased',
           className,
         )}
         style={{
