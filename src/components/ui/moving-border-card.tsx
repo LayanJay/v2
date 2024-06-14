@@ -38,13 +38,13 @@ const MovingBorderCard = ({
       style={style}
     >
       <div
-        className='absolute inset-0 rounded-[1.75rem]'
+        className='absolute inset-0 z-0 rounded-[1.75rem]'
         style={{ borderRadius: `calc(${borderRadius} * 0.96)` }}
       >
         <MovingBorder duration={duration} rx='22%' ry='22%'>
           <div
             className={cn(
-              'h-20 w-20 z-0 opacity-[0.8] bg-[radial-gradient(#CBACF9_40%,transparent_60%)]',
+              'h-20 w-20 opacity-[0.8] bg-[radial-gradient(#CBACF9_40%,transparent_60%)]',
               borderClassName,
             )}
           />
