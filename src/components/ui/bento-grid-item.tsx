@@ -3,7 +3,7 @@
 import animationData from '@/data/confetti.json';
 import { cn } from '@/utils/tailwind-utils';
 import { Copy } from 'lucide-react';
-import Image from 'next/image';
+import Image, { StaticImageData } from 'next/image';
 import { useState } from 'react';
 import Lottie from 'react-lottie';
 import BackgroundGradientAnimation from './background-gradient';
@@ -25,7 +25,7 @@ const BentoGridItem = ({
   id: number;
   title?: string | React.ReactNode;
   description?: string | React.ReactNode;
-  img?: string;
+  img?: string | StaticImageData;
   imgClassName?: string;
   titleClassName?: string;
   descriptionClassName?: string;
@@ -69,7 +69,11 @@ const BentoGridItem = ({
         {id === 2 ? <div className='absolute inset-0 z-10 bg-black-100/50' /> : null}
         <div className='absolute w-full h-full'>
           {img && (
-            <Image src={img} alt={img} className={cn(imgClassName, 'object-cover object-center')} />
+            <Image
+              src={img}
+              alt={'main'}
+              className={cn(imgClassName, 'object-cover object-center')}
+            />
           )}
         </div>
         <div className={`absolute right-0 -bottom-5 ${id === 5 && 'w-full opacity-80'} `}>

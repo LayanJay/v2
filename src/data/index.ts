@@ -1,6 +1,6 @@
-import b1 from '../../public/assets/b1.svg';
+import b1 from '../../public/assets/b1.png';
 import b4 from '../../public/assets/b4.svg';
-import b5 from '../../public/assets/b5.svg';
+import b5 from '../../public/assets/b5.png';
 
 import p1 from '../../public/assets/p1/p1.png';
 import p2 from '../../public/assets/p2/p2.png';
