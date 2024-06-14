@@ -9,7 +9,7 @@ const Experience = () => {
         My <span className='text-purple'>Work Experience</span>
       </h1>
 
-      <div className='grid w-full grid-cols-1 gap-10 mt-12 lg:grid-cols-4'>
+      <div className='grid w-full grid-cols-1 gap-5 sm:gap-10 mt-12 lg:grid-cols-4'>
         {workExperience.map((card) => (
           <MovingBorderCard
             key={card.id}
