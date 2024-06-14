@@ -1,7 +1,6 @@
 import b1 from '../../public/assets/b1.svg';
 import b4 from '../../public/assets/b4.svg';
 import b5 from '../../public/assets/b5.svg';
-import grid from '../../public/assets/grid.svg';
 
 import p1 from '../../public/assets/p1/p1.png';
 import p2 from '../../public/assets/p2/p2.png';
@@ -80,7 +79,7 @@ export const gridItems = [
     className: 'lg:col-span-2 md:col-span-3 md:row-span-1',
     imgClassName: '',
     titleClassName: 'justify-start',
-    img: grid,
+    img: '',
     spareImg: b4,
   },
 
@@ -93,7 +92,7 @@ export const gridItems = [
     titleClassName: 'justify-center md:justify-start lg:justify-center',
     descriptionClassName: 'md:max-w-54',
     img: b5,
-    spareImg: grid,
+    spareImg: '',
   },
   {
     id: 6,
