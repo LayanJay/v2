@@ -21,7 +21,7 @@ import exp2 from '../../public/assets/exp2.svg';
 import exp3 from '../../public/assets/exp3.svg';
 import exp4 from '../../public/assets/exp4.svg';
 
-import profile from '../../public/assets/profile.svg';
+import pubudu from '../../public/assets/pubudu.jpeg';
 import sankhaja from '../../public/assets/sankhaja.jpeg';
 
 import git from '../../public/assets/git.svg';
@@ -158,20 +158,11 @@ export const testimonials = [
   {
     id: 2,
     quote:
-      "Collaborating with Adrian was an absolute pleasure. His professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Adrian's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Adrian is the ideal partner.",
-    name: 'Michael Johnson',
-    image: profile,
-    title: 'Director of AlphaStream Technologies',
-    company: '',
-  },
-  {
-    id: 3,
-    quote:
-      "Collaborating with Adrian was an absolute pleasure. His professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Adrian's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Adrian is the ideal partner.",
-    name: 'Michael Johnson',
-    image: profile,
-    title: 'Director of AlphaStream Technologies',
-    company: '',
+      'I had the pleasure of working with Layan during his tenure as a Software Engineer at TV Derana - Digital. Layan is energetic, versatile, and an excellent team player. I wish him all the best in his career and future endeavors.',
+    name: 'Pubudu Wanigasekara',
+    image: pubudu,
+    title: 'Software Engineer - Team Lead',
+    company: 'Digital Arm of TV Derana',
   },
 ];
 
