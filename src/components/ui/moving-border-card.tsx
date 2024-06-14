@@ -53,7 +53,7 @@ const MovingBorderCard = ({
 
       <div
         className={cn(
-          'relative z-20 bg-slate-900/[0.] border border-slate-800 backdrop-blur-xl text-white flex items-center justify-center w-full h-full text-sm antialiased',
+          'relative z-20 bg-slate-900/[0.] border border-slate-800 backdrop-blur-2xl text-white flex items-center justify-center w-full h-full text-sm antialiased',
           className,
         )}
         style={{
